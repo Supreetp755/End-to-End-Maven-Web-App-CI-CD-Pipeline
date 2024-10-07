@@ -90,7 +90,7 @@ pipeline {
             steps {
                 dir('/home/kmaster/testdir') {
                     withSonarQubeEnv('Sonar') {
-                        sh './mvnw clean verify sonar:sonar -DskipTests'
+                        sh './mvnw clean package verify sonar:sonar -DskipTests'
                         script {
                             GIT_COMMIT = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
                             echo "GIT_COMMIT=${GIT_COMMIT}"
